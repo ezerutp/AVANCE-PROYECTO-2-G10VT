@@ -3,8 +3,9 @@ name: Integración y entrega continua
 # Evento de disparo: push a la rama main o ejecución manual
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+    
+  workflow_dispatch:
 # Cantidad de Jobs: 1 y sistema operativo linux
 jobs:
   build:
