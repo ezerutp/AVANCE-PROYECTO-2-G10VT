@@ -1,0 +1,48 @@
+# El nombre del flujo de trabajo sera: Integración y entrega continua.
+name: Integración y entrega continua
+# Evento de disparo: push a la rama main o ejecución manual
+on:
+  push:
+    branches: [ "main" ]
+    
+  workflow_dispatch:
+# Cantidad de Jobs: 1 y sistema operativo linux
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Declarar y definir las variables de entorno:
+    env:
+      # nombres: tus nombres propios
+      nombres: "Ezer Isai"
+      # apellidos: tus apellidos
+      apellidos: "Vidarte Ticliahuanca"
+      # edad: tu edad
+      edad: "32"  
+
+    steps:
+      # Crear un 1erb step
+      - name: presentación
+        run: |
+          echo "Nombres: ${{ env.nombres }}"
+          echo "Apellidos: ${{ env.apellidos }}"
+          echo "Edad: ${{ env.edad }}"
+      
+      # crear un 2do step
+      - name: datos generales
+        run: echo "carrera de ingeniería de sistemas"
+
+      # declarar y definir variables de entorno secretas
+      # user y password
+
+      # crear un 3er step
+      - name: variables de entorno secretas
+        run: |
+          echo "user: ${{ secrets.user }}"
+          echo "password: ${{ secrets.password }}"
+
+      # crear una variable abierta llamada version_proyecto y asignarle el valor "3.0"
+      # crear un 4to step
+      - name: variables abiertas
+        run: |
+          echo "Versión del proyecto: ${{ vars.version_proyecto }}"
